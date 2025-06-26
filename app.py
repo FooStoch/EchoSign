@@ -83,16 +83,16 @@ class VideoTransformer(VideoTransformerBase):
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-# Button to start camera
-if st.button("Open Camera"):
+# Checkbox to start camera
+if st.checkbox("Open Camera"):
     webrtc_streamer(
         key="echo-sign",
         video_processor_factory=VideoTransformer,
         media_stream_constraints={"video": True, "audio": False},
-        async_processing=True
+        async_processing=True,
     )
 else:
-    st.write("Click 'Open Camera' to start sign detection.")
+    st.write("Click the checkbox to start camera.")
 
 
 
