@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode
 import av
 import cv2
 import pickle
@@ -87,7 +87,7 @@ class VideoTransformer(VideoTransformerBase):
 if st.button("Open Camera"):
     webrtc_streamer(
         key="echo-sign",
-        mode="LIVE",
+        mode=WebRtcMode.LIVE,
         video_transformer_factory=VideoTransformer,
         media_stream_constraints={"video": True, "audio": False},
         async_transform=True
