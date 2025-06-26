@@ -87,6 +87,7 @@ class VideoTransformer(VideoTransformerBase):
 if st.checkbox("Open Camera"):
     webrtc_streamer(
         key="echo-sign",
+        mode=WebRtcMode.SENDRECV,
         video_processor_factory=VideoTransformer,
         media_stream_constraints={"video": True, "audio": False},
         async_processing=True,
