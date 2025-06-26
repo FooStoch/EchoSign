@@ -87,7 +87,6 @@ class VideoTransformer(VideoTransformerBase):
 if st.button("Open Camera"):
     webrtc_streamer(
         key="echo-sign",
-        mode=WebRtcMode.LIVE,
         video_processor_factory=VideoTransformer,
         media_stream_constraints={"video": True, "audio": False},
         async_processing=True
