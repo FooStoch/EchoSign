@@ -15,7 +15,7 @@ def load_model(path="./model.p"):
     model_dict = pickle.load(open(path, "rb"))
     return model_dict['model']
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def get_model():
     return load_model()
 
@@ -88,9 +88,9 @@ if st.button("Open Camera"):
     webrtc_streamer(
         key="echo-sign",
         mode=WebRtcMode.LIVE,
-        video_transformer_factory=VideoTransformer,
+        video_processor_factory=VideoTransformer,
         media_stream_constraints={"video": True, "audio": False},
-        async_transform=True
+        async_processing=True
     )
 else:
     st.write("Click 'Open Camera' to start sign detection.")
